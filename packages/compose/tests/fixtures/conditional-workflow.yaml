@@ -1,0 +1,51 @@
+name: conditional-workflow
+description: A workflow with conditional branching
+version: 1.0.0
+
+inputs:
+  environment:
+    type: string
+    description: Target environment (dev, staging, prod)
+  dryRun:
+    type: boolean
+    default: false
+
+steps:
+  - id: validate
+    skill: validator
+    inputs:
+      env: ${inputs.environment}
+
+  - id: deploy-decision
+    condition:
+      if: ${validate.isValid} and not ${inputs.dryRun}
+      then:
+        - id: prepare
+          skill: deployment-prep
+          inputs:
+            env: ${inputs.environment}
+        - id: deploy
+          condition:
+            if: ${inputs.environment} == "prod"
+            then:
+              id: prod-deploy
+              skill: production-deployer
+              inputs:
+                config: ${prepare.config}
+                approvalRequired: true
+            else:
+              id: non-prod-deploy
+              skill: standard-deployer
+              inputs:
+                config: ${prepare.config}
+      else:
+        id: skip-deploy
+        skill: logger
+        inputs:
+          message: Deployment skipped due to validation failure or dry-run mode
+
+  - id: notify
+    skill: notifier
+    inputs:
+      status: ${deploy-decision.status:-skipped}
+      environment: ${inputs.environment}

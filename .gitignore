@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+log/
+
+
+# Test coverage reports (but not source code directories like src/coverage/)
+/coverage/
+**/coverage/
+!**/src/coverage/
+.nyc_output/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Development documentation (internal only)
+dev-docs/
+AGENT-INSTRUCTIONS.md
+PARALLEL-STATUS.md
+architecture/
+
+# Test fixtures (development only)
+/minimal-skill/
+/valid-skill/
+/tree.yaml
+/.skillkit-groups.json
+
+# Cache
+.cache/
+.turbo/
+.eslintcache
+.claude/
+
+# Package manager lock files (keep pnpm-lock.yaml)
+package-lock.json
+yarn.lock
+docs/other

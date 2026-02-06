@@ -1,0 +1,48 @@
+name: error-handling-workflow
+description: A workflow demonstrating error handling
+version: 1.0.0
+
+inputs:
+  apiEndpoint:
+    type: string
+  retryCount:
+    type: number
+    default: 3
+
+onError:
+  action: fail
+
+steps:
+  - id: fetch-with-retry
+    skill: http-client
+    inputs:
+      url: ${inputs.apiEndpoint}
+    timeout: 30000
+    onError:
+      action: retry
+      retry:
+        maxRetries: ${inputs.retryCount}
+        initialDelay: 1000
+        maxDelay: 10000
+        exponential: true
+
+  - id: process-data
+    skill: data-processor
+    inputs:
+      data: ${fetch-with-retry.response}
+    onError:
+      action: continue
+      fallback:
+        status: error
+        data: null
+
+  - id: save-result
+    skill: database-upsert
+    inputs:
+      record: ${process-data.result}
+    when: ${process-data.status} != "error"
+
+  - id: cleanup
+    skill: resource-cleanup
+    inputs:
+      resources: ${fetch-with-retry.resources:-[]}

@@ -1,0 +1,88 @@
+# {{skill.name}}
+
+> {{skill.description}}
+
+{{#if config.includeTableOfContents}}
+## Table of Contents
+
+{{#each toc}}
+- [{{this.title}}]({{this.anchor}})
+{{/each}}
+
+{{/if}}
+{{#if sections.overview}}
+## Overview
+
+{{sections.overview}}
+
+{{/if}}
+## Installation
+
+```bash
+# Copy the SKILL.md to your project
+cp {{skill.sourcePath}} ./SKILL.md
+```
+
+{{#if sections.workflow}}
+## Quick Start
+
+{{sections.workflow}}
+
+{{/if}}
+{{#if skill.triggers}}
+## Triggers
+
+This skill is activated by the following keywords:
+
+{{#each skill.triggers}}
+- `{{this}}`
+{{/each}}
+
+{{/if}}
+{{#if sections.parameters}}
+## Parameters
+
+{{sections.parameters}}
+
+{{/if}}
+{{#if sections.examples}}
+## Examples
+
+{{sections.examples}}
+
+{{/if}}
+{{#if sections.errorHandling}}
+## Error Handling
+
+{{sections.errorHandling}}
+
+{{/if}}
+{{#each sections.custom}}
+## {{title}}
+
+{{content}}
+
+{{/each}}
+{{#if skill.platforms}}
+## Supported Platforms
+
+{{#each skill.platforms}}
+- {{this}}
+{{/each}}
+
+{{/if}}
+{{#if skill.tags}}
+## Tags
+
+{{#each skill.tags}}
+`{{this}}` {{/each}}
+
+{{/if}}
+## License
+
+MIT
+
+{{#if config.includeTimestamp}}
+---
+*Generated on {{config.timestamp}}*
+{{/if}}

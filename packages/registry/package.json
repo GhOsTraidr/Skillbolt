@@ -1,0 +1,68 @@
+{
+  "name": "@skillbolt/registry",
+  "version": "1.0.2",
+  "description": "Local Skill registry and package manager for Skillbolt",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "skill-registry": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf dist coverage"
+  },
+  "dependencies": {
+    "@skillbolt/core": "^1.0.2",
+    "commander": "^11.1.0",
+    "semver": "^7.6.0",
+    "tar": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/semver": "^7.5.6",
+    "@types/tar": "^6.1.13",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TacoSkill/Skill-Kit.git",
+    "directory": "packages/registry"
+  },
+  "keywords": [
+    "skill",
+    "registry",
+    "package-manager",
+    "ai",
+    "agent"
+  ],
+  "license": "MIT"
+}

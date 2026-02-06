@@ -1,0 +1,78 @@
+# {{name}}
+
+> {{description}}
+
+## Overview
+
+[Brief overview of what this skill does]
+
+## Installation
+
+```bash
+# Copy to your skills directory
+cp -r {{kebabName}}/ ~/.skills/{{kebabName}}/
+
+# Or install via skill-kit
+skill install ./{{kebabName}}
+```
+
+## Quick Start
+
+{{#if triggers.length}}
+1. Install the skill
+2. Ask your AI agent to "{{triggers.[0]}}"
+3. Follow the guided workflow
+{{else}}
+1. Install the skill
+2. [Describe how to trigger]
+3. Follow the guided workflow
+{{/if}}
+
+## Usage
+
+{{#if triggers.length}}
+This skill activates when you:
+{{#each triggers}}
+- Say "{{this}}"
+{{/each}}
+{{else}}
+[Describe how to use this skill]
+{{/if}}
+
+## Structure
+
+```
+{{kebabName}}/
+├── SKILL.md              # Main skill definition
+├── references/           # Supporting documentation
+│   ├── patterns.md       # Common patterns
+│   └── advanced.md       # Advanced usage
+├── examples/             # Example scripts
+│   └── example.sh        # Runnable example
+├── scripts/              # Utility scripts
+│   └── validate.sh       # Validation script
+└── README.md             # This file
+```
+
+## Examples
+
+See the `examples/` directory for runnable examples.
+
+## Contributing
+
+1. Fork this repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+MIT
+
+## Author
+
+{{#if author}}
+{{author}}
+{{else}}
+[Your Name]
+{{/if}}

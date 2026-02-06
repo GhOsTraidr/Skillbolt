@@ -1,0 +1,22 @@
+description: Basic test for test-skill
+skill: ./packages/test/tests/fixtures/test-skill/SKILL.md
+cases:
+  - name: Test exact match for "run tests"
+    input: run tests
+    shouldTrigger: true
+
+  - name: Test exact match for "test something"
+    input: test something
+    shouldTrigger: true
+
+  - name: Test exact match for "run test"
+    input: run test
+    shouldTrigger: true
+
+  - name: Test exact match for "execute tests"
+    input: execute tests
+    shouldTrigger: true
+
+  - name: Test non-matching input
+    input: hello world
+    shouldTrigger: false

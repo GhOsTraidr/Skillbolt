@@ -1,0 +1,906 @@
+id: root
+name: Root
+description: Skill capability tree root
+depth: 0
+parentId: null
+children:
+  - id: content-creation
+    name: Content Creation
+    description: This category encompasses tools and workflows for authoring various
+      forms of written content, such as documentation, proposals, and technical
+      specifications. It focuses on assisting users in structuring, refining,
+      and iterating on text to produce high-quality documents.
+    depth: 1
+    parentId: root
+    children: []
+    skills:
+      - id: anthropics-skills-doc-coauthoring
+        name: doc-coauthoring
+        description: Guide users through a structured workflow for co-authoring
+          documentation. Use when user wants to write documentation, proposals,
+          technical specs, decision docs, or similar structured content. This
+          workflow helps users efficiently transfer context, refine content
+          through iteration, and verify the doc works for readers. Trigger when
+          user mentions writing docs, creating proposals, drafting specs, or
+          similar documentation tasks.
+        path: ""
+        skillPath: /home/xkaiwen/.skill-kit/skills/anthropics-skills-doc-coauthoring/SKILL.md
+        content: >-
+          ---
+
+          name: doc-coauthoring
+
+          description: Guide users through a structured workflow for
+          co-authoring documentation. Use when user wants to write
+          documentation, proposals, technical specs, decision docs, or similar
+          structured content. This workflow helps users efficiently transfer
+          context, refine content through iteration, and verify the doc works
+          for readers. Trigger when user mentions writing docs, creating
+          proposals, drafting specs, or similar documentation tasks.
+
+          ---
+
+
+          # Doc Co-Authoring Workflow
+
+
+          This skill provides a structured workflow for guiding users through
+          collaborative document creation. Act as an active guide, walking users
+          through three stages: Context Gathering, Refinement & Structure, and
+          Reader Testing.
+
+
+          ## When to Offer This Workflow
+
+
+          **Trigger conditions:**
+
+          - User mentions writing documentation: "write a doc", "draft a
+          proposal", "create a spec", "write up"
+
+          - User mentions specific doc types: "PRD", "design doc", "decision
+          doc", "RFC"
+
+          - User seems to be starting a substantial writing task
+
+
+          **Initial offer:**
+
+          Offer the user a structured workflow for co-authoring the document.
+          Explain the three stages:
+
+
+          1. **Context Gathering**: User provides all relevant context while
+          Claude asks clarifying questions
+
+          2. **Refinement & Structure**: Iteratively build each section through
+          brainstorming and editing
+
+          3. **Reader Testing**: Test the doc with a fresh Claude (no context)
+          to catch blind spots before others read it
+
+
+          Explain that this approach helps ensure the doc works well when others
+          read it (including when they paste it into Claude). Ask if they want
+          to try this workflow or prefer to work freeform.
+
+
+          If user declines, work freeform. If user accepts, proceed to Stage 1.
+
+
+          ## Stage 1: Context Gathering
+
+
+          **Goal:** Close the gap between what the user knows and what Claude
+          knows, enabling smart guidance later.
+
+
+          ### Initial Questions
+
+
+          Start by asking the user for meta-context about the document:
+
+
+          1. What type of document is this? (e.g., technical spec, decision doc,
+          proposal)
+
+          2. Who's the primary audience?
+
+          3. What's the desired impact when someone reads this?
+
+          4. Is there a template or specific format to follow?
+
+          5. Any other constraints or context to know?
+
+
+          Inform them they can answer in shorthand or dump information however
+          works best for them.
+
+
+          **If user provides a template or mentions a doc type:**
+
+          - Ask if they have a template document to share
+
+          - If they provide a link to a shared document, use the appropriate
+          integration to fetch it
+
+          - If they provide a file, read it
+
+
+          **If user mentions editing an existing shared document:**
+
+          - Use the appropriate integration to read the current state
+
+          - Check for images without alt-text
+
+          - If images exist without alt-text, explain that when others use
+          Claude to understand the doc, Claude won't be able to see them. Ask if
+          they want alt-text generated. If so, request they paste each image
+          into chat for descriptive alt-text generation.
+
+
+          ### Info Dumping
+
+
+          Once initial questions are answered, encourage the user to dump all
+          the context they have. Request information such as:
+
+          - Background on the project/problem
+
+          - Related team discussions or shared documents
+
+          - Why alternative solutions aren't being used
+
+          - Organizational context (team dynamics, past incidents, politics)
+
+          - Timeline pressures or constraints
+
+          - Technical architecture or dependencies
+
+          - Stakeholder concerns
+
+
+          Advise them not to worry about organizing it - just get it all out.
+          Offer multiple ways to provide context:
+
+          - Info dump stream-of-consciousness
+
+          - Point to team channels or threads to read
+
+          - Link to shared documents
+
+
+          **If integrations are available** (e.g., Slack, Teams, Google Drive,
+          SharePoint, or other MCP servers), mention that these can be used to
+          pull in context directly.
+
+
+          **If no integrations are detected and in Claude.ai or Claude app:**
+          Suggest they can enable connectors in their Claude settings to allow
+          pulling context from messaging apps and document storage directly.
+
+
+          Inform them clarifying questions will be asked once they've done their
+          initial dump.
+
+
+          **During context gathering:**
+
+
+          - If user mentions team channels or shared documents:
+            - If integrations available: Inform them the content will be read now, then use the appropriate integration
+            - If integrations not available: Explain lack of access. Suggest they enable connectors in Claude settings, or paste the relevant content directly.
+
+          - If user mentions entities/projects that are unknown:
+            - Ask if connected tools should be searched to learn more
+            - Wait for user confirmation before searching
+
+          - As user provides context, track what's being learned and what's
+          still unclear
+
+
+          **Asking clarifying questions:**
+
+
+          When user signals they've done their initial dump (or after
+          substantial context provided), ask clarifying questions to ensure
+          understanding:
+
+
+          Generate 5-10 numbered questions based on gaps in the context.
+
+
+          Inform them they can use shorthand to answer (e.g., "1: yes, 2: see
+          #channel, 3: no because backwards compat"), link to more docs, point
+          to cha
+  - id: development
+    name: Development
+    description: This category includes developer-centric tools for code generation,
+      testing, and API management. It covers tasks ranging from reviewing code
+      quality and writing specific bundler tests to migrating codebases to new
+      model versions.
+    depth: 1
+    parentId: root
+    children: []
+    skills:
+      - id: claude-opus-4-5-migration
+        name: claude-opus-4-5-migration
+        description: Migrate prompts and code from Claude Sonnet 4.0, Sonnet 4.5, or
+          Opus 4.1 to Opus 4.5. Use when the user wants to update their
+          codebase, prompts, or API calls to use Opus 4.5. Handles model string
+          updates and prompt adjustments for known Opus 4.5 behavioral
+          differences. Does NOT migrate Haiku 4.5.
+        path: ""
+        skillPath: /home/xkaiwen/.skill-kit/skills/claude-opus-4-5-migration/SKILL.md
+        content: >
+          ---
+
+          name: claude-opus-4-5-migration
+
+          description: Migrate prompts and code from Claude Sonnet 4.0, Sonnet
+          4.5, or Opus 4.1 to Opus 4.5. Use when the user wants to update their
+          codebase, prompts, or API calls to use Opus 4.5. Handles model string
+          updates and prompt adjustments for known Opus 4.5 behavioral
+          differences. Does NOT migrate Haiku 4.5.
+
+          ---
+
+
+          # Opus 4.5 Migration Guide
+
+
+          One-shot migration from Sonnet 4.0, Sonnet 4.5, or Opus 4.1 to Opus
+          4.5.
+
+
+          ## Migration Workflow
+
+
+          1. Search codebase for model strings and API calls
+
+          2. Update model strings to Opus 4.5 (see platform-specific strings
+          below)
+
+          3. Remove unsupported beta headers
+
+          4. Add effort parameter set to `"high"` (see `references/effort.md`)
+
+          5. Summarize all changes made
+
+          6. Tell the user: "If you encounter any issues with Opus 4.5, let me
+          know and I can help adjust your prompts."
+
+
+          ## Model String Updates
+
+
+          Identify which platform the codebase uses, then replace model strings
+          accordingly.
+
+
+          ### Unsupported Beta Headers
+
+
+          Remove the `context-1m-2025-08-07` beta header if present—it is not
+          yet supported with Opus 4.5. Leave a comment noting this:
+
+
+          ```python
+
+          # Note: 1M context beta (context-1m-2025-08-07) not yet supported with
+          Opus 4.5
+
+          ```
+
+
+          ### Target Model Strings (Opus 4.5)
+
+
+          | Platform | Opus 4.5 Model String |
+
+          |----------|----------------------|
+
+          | Anthropic API (1P) | `claude-opus-4-5-20251101` |
+
+          | AWS Bedrock | `anthropic.claude-opus-4-5-20251101-v1:0` |
+
+          | Google Vertex AI | `claude-opus-4-5@20251101` |
+
+          | Azure AI Foundry | `claude-opus-4-5-20251101` |
+
+
+          ### Source Model Strings to Replace
+
+
+          | Source Model | Anthropic API (1P) | AWS Bedrock | Google Vertex AI |
+
+          |--------------|-------------------|-------------|------------------|
+
+          | Sonnet 4.0 | `claude-sonnet-4-20250514` |
+          `anthropic.claude-sonnet-4-20250514-v1:0` | `claude-sonnet-4@20250514`
+          |
+
+          | Sonnet 4.5 | `claude-sonnet-4-5-20250929` |
+          `anthropic.claude-sonnet-4-5-20250929-v1:0` |
+          `claude-sonnet-4-5@20250929` |
+
+          | Opus 4.1 | `claude-opus-4-1-20250422` |
+          `anthropic.claude-opus-4-1-20250422-v1:0` | `claude-opus-4-1@20250422`
+          |
+
+
+          **Do NOT migrate**: Any Haiku models (e.g.,
+          `claude-haiku-4-5-20251001`).
+
+
+          ## Prompt Adjustments
+
+
+          Opus 4.5 has known behavioral differences from previous models. **Only
+          apply these fixes if the user explicitly requests them or reports a
+          specific issue.** By default, just update model strings.
+
+
+          **Integration guidelines**: When adding snippets, don't just append
+          them to prompts. Integrate them thoughtfully:
+
+          - Use XML tags (e.g., `<code_guidelines>`, `<tool_usage>`) to organize
+          additions
+
+          - Match the style and structure of the existing prompt
+
+          - Place snippets in logical locations (e.g., coding guidelines near
+          other coding instructions)
+
+          - If the prompt already uses XML tags, add new content within
+          appropriate existing tags or create consistent new ones
+
+
+          ### 1. Tool Overtriggering
+
+
+          Opus 4.5 is more responsive to system prompts. Aggressive language
+          that prevented undertriggering on previous models may now cause
+          overtriggering.
+
+
+          **Apply if**: User reports tools being called too frequently or
+          unnecessarily.
+
+
+          **Find and soften**:
+
+          - `CRITICAL:` → remove or soften
+
+          - `You MUST...` → `You should...`
+
+          - `ALWAYS do X` → `Do X`
+
+          - `NEVER skip...` → `Don't skip...`
+
+          - `REQUIRED` → remove or soften
+
+
+          Only apply to tool-triggering instructions. Leave other uses of
+          emphasis alone.
+
+
+          ### 2. Over-Engineering Prevention
+
+
+          Opus 4.5 tends to create extra files, add unnecessary abstractions, or
+          build unrequested flexibility.
+
+
+          **Apply if**: User reports unwanted files, excessive abstraction, or
+          unrequested features. Add the snippet from
+          `references/prompt-snippets.md`.
+
+
+          ### 3. Code Exploration
+
+
+          Opus 4.5 can be overly conservative about exploring code, proposing
+          solutions without reading files.
+
+
+          **Apply if**: User reports the model proposing fixes without
+          inspecting relevant code. Add the snippet from
+          `references/prompt-snippets.md`.
+
+
+          ### 4. Frontend Design
+
+
+          **Apply if**: User requests improved frontend design quality or
+          reports generic-looking outputs.
+
+
+          Add the frontend aesthetics snippet from
+          `references/prompt-snippets.md`.
+
+
+          ### 5. Thinking Sensitivity
+
+
+          When extended thinking is not enabled (the default), Opus 4.5 is
+          particularly sensitive to the word "think" and its variants. Extended
+          thinking is enabled only if the API request contains a `thinking`
+          parameter.
+
+
+          **Apply if**: User reports issues related to "thinking" while extended
+          thinking is not enabled (no `thinking` parameter in request).
+
+
+          Replace "think" with alternatives like "consider," "believe," or
+          "evaluate."
+
+
+          ## Reference
+
+
+          See `references/prompt-snippets.md` for the full text of each snippet
+          to add.
+
+
+          See `references/effort.md` for configuring the effort parameter (only
+          if user requests it).
+      - id: my-first-skill
+        name: my-first-skill
+        description: This skill should be used when the user asks to "review code". A
+          skill that helps with code review
+        path: ""
+        skillPath: /home/xkaiwen/.skill-kit/skills/my-first-skill/SKILL.md
+        content: >+
+          ---
+
+          name: my-first-skill
+
+          description: This skill should be used when the user asks to "review
+          code". A skill that helps with code review
+
+          version: 1.0.0
+
+          triggers:
+            - review code
+            - check code
+          ---
+
+
+          # my-first-skill
+
+
+          A skill that helps with code review
+
+
+          ## Overview
+
+
+          This skill provides automated code review capabilities, checking for
+          common issues and suggesting improvements.
+
+
+          ## When This Skill Applies
+
+
+          This skill activates when:
+
+          - User asks to "review code"
+
+          - User asks to "check code"
+
+
+          ## Core Workflow
+
+
+          ### Step 1: Analyze Code
+
+
+          Read and understand the code to be reviewed.
+
+
+          ### Step 2: Check Issues
+
+
+          Look for:
+
+          - Code style violations
+
+          - Potential bugs
+
+          - Performance issues
+
+          - Security concerns
+
+
+          ### Step 3: Generate Report
+
+
+          Provide a summary with:
+
+          - Issues found
+
+          - Suggested fixes
+
+          - Overall assessment
+
+
+          ## Parameters
+
+
+          | Parameter | Type    | Required |
+          Description                             |
+
+          | --------- | ------- | -------- |
+          --------------------------------------- |
+
+          | path      | string  | Yes      | Path to the file or directory to
+          review |
+
+          | strict    | boolean | No       | Enable strict mode (default:
+          false)     |
+
+
+          ## Examples
+
+
+          ### Basic Usage
+
+
+          ```
+
+          Review this file: src/main.ts
+
+          ```
+
+
+          ### Strict Mode
+
+
+          ```
+
+          Review src/ directory in strict mode
+
+          ```
+
+
+          ## Error Handling
+
+
+          - **File not found**: Verify the path exists
+
+          - **Permission denied**: Check file permissions
+
+          - **Unsupported file type**: Only code files are supported
+
+
+          ## References
+
+
+          - See `references/patterns.md` for common patterns
+
+          - [External reference if applicable]
+
+      - id: oven-sh-bun-writing-bundler-tests
+        name: writing-bundler-tests
+        description: Guides writing bundler tests using itBundled/expectBundled in
+          test/bundler/. Use when creating or modifying bundler, transpiler, or
+          code transformation tests.
+        path: ""
+        skillPath: /home/xkaiwen/.skill-kit/skills/oven-sh-bun-writing-bundler-tests/SKILL.md
+        content: >
+          ---
+
+          name: writing-bundler-tests
+
+          description: Guides writing bundler tests using
+          itBundled/expectBundled in test/bundler/. Use when creating or
+          modifying bundler, transpiler, or code transformation tests.
+
+          ---
+
+
+          # Writing Bundler Tests
+
+
+          Bundler tests use `itBundled()` from `test/bundler/expectBundled.ts`
+          to test Bun's bundler.
+
+
+          ## Basic Usage
+
+
+          ```typescript
+
+          import { describe } from "bun:test";
+
+          import { itBundled, dedent } from "./expectBundled";
+
+
+          describe("bundler", () => {
+            itBundled("category/TestName", {
+              files: {
+                "index.js": `console.log("hello");`,
+              },
+              run: {
+                stdout: "hello",
+              },
+            });
+          });
+
+          ```
+
+
+          Test ID format: `category/TestName` (e.g., `banner/CommentBanner`,
+          `minify/Empty`)
+
+
+          ## File Setup
+
+
+          ```typescript
+
+          {
+            files: {
+              "index.js": `console.log("test");`,
+              "lib.ts": `export const foo = 123;`,
+              "nested/file.js": `export default {};`,
+            },
+            entryPoints: ["index.js"],  // defaults to first file
+            runtimeFiles: {             // written AFTER bundling
+              "extra.js": `console.log("added later");`,
+            },
+          }
+
+          ```
+
+
+          ## Bundler Options
+
+
+          ```typescript
+
+          {
+            outfile: "/out.js",
+            outdir: "/out",
+            format: "esm" | "cjs" | "iife",
+            target: "bun" | "browser" | "node",
+
+            // Minification
+            minifyWhitespace: true,
+            minifyIdentifiers: true,
+            minifySyntax: true,
+
+            // Code manipulation
+            banner: "// copyright",
+            footer: "// end",
+            define: { "PROD": "true" },
+            external: ["lodash"],
+
+            // Advanced
+            sourceMap: "inline" | "external",
+            splitting: true,
+            treeShaking: true,
+            drop: ["console"],
+          }
+
+          ```
+
+
+          ## Runtime Verification
+
+
+          ```typescript
+
+          {
+            run: {
+              stdout: "expected output",      // exact match
+              stdout: /regex/,                // pattern match
+              partialStdout: "contains this", // substring
+              stderr: "error output",
+              exitCode: 1,
+              env: { NODE_ENV: "production" },
+              runtime: "bun" | "node",
+
+              // Runtime errors
+              error: "ReferenceError: x is not defined",
+            },
+          }
+
+          ```
+
+
+          ## Bundle Errors/Warnings
+
+
+          ```typescript
+
+          {
+            bundleErrors: {
+              "/file.js": ["error message 1", "error message 2"],
+            },
+            bundleWarnings: {
+              "/file.js": ["warning message"],
+            },
+          }
+
+          ```
+
+
+          ## Dead Code Elimination (DCE)
+
+
+          Add markers in source code:
+
+
+          ```javascript
+
+          // KEEP - this should survive
+
+          const used = 1;
+
+
+          // REMOVE - this should be eliminated
+
+          const unused = 2;
+
+          ```
+
+
+          ```typescript
+
+          {
+            dce: true,
+            dceKeepMarkerCount: 5,  // expected KEEP markers
+          }
+
+          ```
+
+
+          ## Capture Pattern
+
+
+          Verify exact transpilation with `capture()`:
+
+
+          ```typescript
+
+          itBundled("string/Folding", {
+            files: {
+              "index.ts": `capture(\`\${1 + 1}\`);`,
+            },
+            capture: ['"2"'], // expected captured value
+            minifySyntax: true,
+          });
+
+          ```
+
+
+          ## Post-Bundle Assertions
+
+
+          ```typescript
+
+          {
+            onAfterBundle(api) {
+              api.expectFile("out.js").toContain("console.log");
+              api.assertFileExists("out.js");
+
+              const content = api.readFile("out.js");
+              expect(content).toMatchSnapshot();
+
+              const values = api.captureFile("out.js");
+              expect(values).toEqual(["2"]);
+            },
+          }
+
+          ```
+
+
+          ## Common Patterns
+
+
+          **Simple output verification:**
+
+
+          ```typescript
+
+          itBundled("banner/Comment", {
+            banner: "// copyright",
+            files: { "a.js": `console.log("Hello")` },
+            onAfterBundle(api) {
+              api.expectFile("out.js").toContain("// copyright");
+            },
+          });
+
+          ```
+
+
+          **Multi-file CJS/ESM interop:**
+
+
+          ```typescript
+
+          itBundled("cjs/ImportSyntax", {
+            files: {
+              "entry.js": `import lib from './lib.cjs'; console.log(lib);`,
+              "lib.cjs": `exports.foo = 'bar';`,
+            },
+            run: { stdout: '{"foo":"bar"}' },
+          });
+
+          ```
+
+
+          **Error handling:**
+
+
+          ```typescript
+
+          itBundled("edgecase/InvalidLoader", {
+            files: { "index.js": `...` },
+            bundleErrors: {
+              "index.js": ["Unsupported loader type"],
+            },
+          });
+
+          ```
+
+
+          ## Test Organization
+
+
+          ```text
+
+          test/bundler/
+
+          ├── bundler_banner.test.ts
+
+          ├── bundler_string.test.ts
+
+          ├── bundler_minify.test.ts
+
+          ├── bundler_cjs.test.ts
+
+          ├── bundler_edgecase.test.ts
+
+          ├── bundler_splitting.test.ts
+
+          ├── css/
+
+          ├── transpiler/
+
+          └── expectBundled.ts
+
+          ```
+
+
+          ## Running Tests
+
+
+          ```bash
+
+          bun bd test test/bundler/bundler_banner.test.ts
+
+          BUN_BUNDLER_TEST_FILTER="banner/Comment" bun bd test
+          bundler_banner.test.ts
+
+          BUN_BUNDLER_TEST_DEBUG=1 bun bd test bundler_minify.test.ts
+
+          ```
+
+
+          ## Key Points
+
+
+          - Use `dedent` for readable multi-line code
+
+          - File paths are relative (e.g., `/index.js`)
+
+          - Use `capture()` to verify exact transpilation results
+
+          - Use `.toMatchSnapshot()` for complex outputs
+
+          - Pass array to `run` for multiple test scenarios
+skills: []

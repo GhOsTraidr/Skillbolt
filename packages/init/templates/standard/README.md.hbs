@@ -1,0 +1,35 @@
+# {{name}}
+
+> {{description}}
+
+## Installation
+
+```bash
+# Copy to your skills directory
+cp -r {{kebabName}}/ ~/.skills/{{kebabName}}/
+```
+
+## Usage
+
+{{#if triggers.length}}
+This skill activates when you:
+{{#each triggers}}
+- Say "{{this}}"
+{{/each}}
+{{else}}
+[Describe how to use this skill]
+{{/if}}
+
+## Structure
+
+```
+{{kebabName}}/
+├── SKILL.md           # Main skill definition
+├── references/        # Supporting documentation
+│   └── patterns.md    # Common patterns
+└── README.md          # This file
+```
+
+## License
+
+MIT

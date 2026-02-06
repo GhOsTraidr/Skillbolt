@@ -1,0 +1,25 @@
+name: simple-workflow
+description: A simple sequential workflow example
+version: 1.0.0
+
+inputs:
+  message:
+    type: string
+    description: The message to process
+    required: true
+
+steps:
+  - id: greet
+    skill: greeter
+    inputs:
+      name: ${inputs.message}
+
+  - id: process
+    skill: processor
+    inputs:
+      data: ${greet.output}
+
+outputs:
+  result:
+    type: string
+    value: ${process.result}

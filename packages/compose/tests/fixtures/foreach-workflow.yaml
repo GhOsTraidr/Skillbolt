@@ -1,0 +1,44 @@
+name: foreach-workflow
+description: A workflow with foreach loop
+version: 1.0.0
+
+inputs:
+  items:
+    type: array
+    description: Items to process
+
+steps:
+  - id: validate-items
+    skill: array-validator
+    inputs:
+      items: ${inputs.items}
+
+  - id: process-each
+    foreach:
+      items: ${inputs.items}
+      as: item
+      index: idx
+      step:
+        - id: transform-item
+          skill: transformer
+          inputs:
+            data: ${item}
+            position: ${idx}
+        - id: save-item
+          skill: database-insert
+          inputs:
+            record: ${transform-item.result}
+      maxConcurrency: 5
+
+  - id: aggregate
+    skill: aggregator
+    inputs:
+      results: ${process-each.results}
+
+outputs:
+  summary:
+    type: object
+    value: ${aggregate.summary}
+  processedCount:
+    type: number
+    value: ${aggregate.count}

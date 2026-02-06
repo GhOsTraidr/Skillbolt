@@ -1,0 +1,50 @@
+# {{skill.name}} API Reference
+
+> Version: {{skill.version}}
+
+{{#if sections.parameters}}
+## Parameters
+
+{{sections.parameters}}
+
+{{/if}}
+{{#if skill.triggers}}
+## Trigger Keywords
+
+| Keyword | Description |
+|---------|-------------|
+{{#each skill.triggers}}
+| `{{this}}` | Activates the skill |
+{{/each}}
+
+{{/if}}
+{{#if sections.workflow}}
+## Workflow
+
+{{sections.workflow}}
+
+{{/if}}
+{{#if sections.errorHandling}}
+## Error Codes
+
+{{sections.errorHandling}}
+
+{{/if}}
+## Metadata
+
+| Property | Value |
+|----------|-------|
+| Name | {{skill.name}} |
+| Version | {{skill.version}} |
+{{#if skill.author}}
+| Author | {{skill.author}} |
+{{/if}}
+{{#if skill.repository}}
+| Repository | {{skill.repository}} |
+{{/if}}
+| Platforms | {{join skill.platforms}} |
+
+{{#if config.includeTimestamp}}
+---
+*Generated on {{config.timestamp}}*
+{{/if}}

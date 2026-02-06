@@ -1,0 +1,38 @@
+name: parallel-workflow
+description: A workflow with parallel execution
+version: 1.0.0
+
+inputs:
+  urls:
+    type: array
+    description: URLs to fetch in parallel
+
+steps:
+  - id: fetch-parallel
+    parallel:
+      - id: fetch-api
+        skill: http-client
+        inputs:
+          url: ${inputs.urls[0]}
+      - id: fetch-db
+        skill: database-query
+        inputs:
+          query: SELECT * FROM data
+      - id: fetch-cache
+        skill: cache-reader
+        inputs:
+          key: cached-data
+    maxConcurrency: 3
+    failureStrategy: wait-all
+
+  - id: merge-results
+    skill: data-merger
+    inputs:
+      api: ${fetch-api.data}
+      db: ${fetch-db.rows}
+      cache: ${fetch-cache.value}
+
+outputs:
+  merged:
+    type: object
+    value: ${merge-results.output}

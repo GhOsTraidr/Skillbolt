@@ -1,0 +1,178 @@
+---
+name: {{name}}
+description: {{#if triggers.length}}This skill should be used when the user asks to "{{triggers.[0]}}". {{/if}}{{description}}
+version: {{version}}
+{{#if author}}
+author: {{author}}
+{{/if}}
+{{#if triggers.length}}
+triggers:
+{{#each triggers}}
+  - {{this}}
+{{/each}}
+{{/if}}
+tags:
+  - [tag1]
+  - [tag2]
+---
+
+# {{name}}
+
+{{description}}
+
+## Overview
+
+[Provide a comprehensive description of what problem this skill solves, why it exists, and who should use it]
+
+### Key Features
+
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+
+## When This Skill Applies
+
+This skill activates when:
+{{#if triggers.length}}
+{{#each triggers}}
+- User asks to "{{this}}"
+{{/each}}
+{{else}}
+- [Define trigger conditions]
+{{/if}}
+
+### Scope
+
+**In scope:**
+- [What this skill covers]
+
+**Out of scope:**
+- [What this skill does NOT cover]
+
+## Prerequisites
+
+Before using this skill, ensure:
+
+- [Prerequisite 1]
+- [Prerequisite 2]
+- [Prerequisite 3]
+
+## Core Workflow
+
+### Step 1: [Step Title]
+
+[Detailed step description using imperative mood]
+
+**Actions:**
+1. [Action 1]
+2. [Action 2]
+3. [Action 3]
+
+**Expected Outcome:** [What should happen after this step]
+
+### Step 2: [Step Title]
+
+[Step description]
+
+**Actions:**
+1. [Action 1]
+2. [Action 2]
+
+**Expected Outcome:** [What should happen after this step]
+
+### Step 3: [Step Title]
+
+[Step description]
+
+**Actions:**
+1. [Action 1]
+2. [Action 2]
+
+**Expected Outcome:** [What should happen after this step]
+
+## Parameters
+
+| Parameter | Type | Default | Required | Description |
+|-----------|------|---------|----------|-------------|
+| `param1` | string | - | Yes | [Parameter description] |
+| `param2` | boolean | `false` | No | [Parameter description] |
+| `param3` | number | `10` | No | [Parameter description] |
+
+### Parameter Details
+
+#### `param1`
+
+[Detailed explanation of param1, including valid values and examples]
+
+#### `param2`
+
+[Detailed explanation of param2]
+
+## Error Handling
+
+| Error | Cause | Resolution |
+|-------|-------|------------|
+| [Error 1] | [What causes it] | [How to fix] |
+| [Error 2] | [What causes it] | [How to fix] |
+
+### Recovery Strategies
+
+- **[Scenario 1]**: [Recovery approach]
+- **[Scenario 2]**: [Recovery approach]
+
+## Example Usage
+
+### Basic Example
+
+**User Request:**
+```
+[Example user request]
+```
+
+**Expected Behavior:**
+[What the skill should do]
+
+### Advanced Example
+
+**User Request:**
+```
+[More complex example]
+```
+
+**Expected Behavior:**
+[What the skill should do]
+
+### Edge Case Example
+
+**User Request:**
+```
+[Edge case example]
+```
+
+**Expected Behavior:**
+[How the skill handles this edge case]
+
+## References
+
+- See `references/patterns.md` for common patterns
+- See `references/advanced.md` for advanced usage
+- See `examples/` for runnable examples
+
+## Testing
+
+Run the validation script:
+
+```bash
+./scripts/validate.sh
+```
+
+## Notes
+
+- [Important consideration 1]
+- [Important consideration 2]
+- [Important consideration 3]
+
+## Changelog
+
+### v{{version}} ({{date}})
+- Initial release

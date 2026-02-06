@@ -1,0 +1,68 @@
+---
+name: {{name}}
+description: {{#if triggers.length}}This skill should be used when the user asks to "{{triggers.[0]}}". {{/if}}{{description}}
+version: {{version}}
+{{#if author}}
+author: {{author}}
+{{/if}}
+{{#if triggers.length}}
+triggers:
+{{#each triggers}}
+  - {{this}}
+{{/each}}
+{{/if}}
+---
+
+# {{name}}
+
+{{description}}
+
+## Overview
+
+[Describe what problem this skill solves]
+
+## When This Skill Applies
+
+This skill activates when:
+{{#if triggers.length}}
+{{#each triggers}}
+- User asks to "{{this}}"
+{{/each}}
+{{else}}
+- [Define trigger conditions]
+{{/if}}
+
+## Prerequisites
+
+- [Prerequisite 1]
+- [Prerequisite 2]
+
+## Core Workflow
+
+### Step 1: [Step Title]
+
+[Step description using imperative mood]
+
+### Step 2: [Step Title]
+
+[Step description]
+
+## Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `param1` | string | - | [Parameter description] |
+
+## Error Handling
+
+- **[Error Scenario]**: [How to handle]
+
+## Example Usage
+
+```
+[Example user request]
+```
+
+## Notes
+
+- [Additional notes]

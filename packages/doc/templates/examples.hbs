@@ -1,0 +1,47 @@
+# {{skill.name}} Examples
+
+> {{skill.description}}
+
+{{#if sections.examples}}
+## Usage Examples
+
+{{sections.examples}}
+
+{{/if}}
+{{#if sections.workflow}}
+## Step-by-Step Guide
+
+{{sections.workflow}}
+
+{{/if}}
+{{#if skill.triggers}}
+## How to Trigger
+
+Use any of these keywords to activate the skill:
+
+{{#each skill.triggers}}
+```
+{{this}}
+```
+
+{{/each}}
+{{/if}}
+
+{{#if sections.errorHandling}}
+## Common Issues
+
+{{sections.errorHandling}}
+
+{{/if}}
+## Quick Reference
+
+**Skill:** {{skill.name}}
+**Version:** {{skill.version}}
+{{#if skill.author}}
+**Author:** {{skill.author}}
+{{/if}}
+
+{{#if config.includeTimestamp}}
+---
+*Generated on {{config.timestamp}}*
+{{/if}}

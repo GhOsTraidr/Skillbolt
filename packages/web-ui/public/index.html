@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skill Kit Web UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Spline+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-mark">SK</div>
+          <div>
+            <h1>Skill Kit Control Room</h1>
+            <p>Search, review, and orchestrate skills with live DAG insight.</p>
+          </div>
+        </div>
+        <div class="status-chip">
+          <span class="status-label">Phase</span>
+          <span id="phase-indicator" class="phase-pill">Idle</span>
+        </div>
+      </header>
+
+      <main class="app-grid">
+        <section id="task-panel" class="panel task-panel"></section>
+
+        <section
+          id="skills-panel"
+          class="panel skills-panel"
+          data-phase="searching reviewing planning executing"
+        >
+          <div class="panel-header">
+            <div>
+              <h2>Skill Search</h2>
+              <p>Curate the skill lineup before execution.</p>
+            </div>
+            <div class="panel-actions">
+              <button class="btn secondary" id="confirm-search">Confirm Search</button>
+            </div>
+          </div>
+          <div id="skill-results" class="panel-body"></div>
+        </section>
+
+        <section id="plan-panel" class="panel plan-panel" data-phase="planning">
+          <div class="panel-header">
+            <div>
+              <h2>Plan Review</h2>
+              <p>Select the plan to execute.</p>
+            </div>
+            <div class="panel-actions">
+              <button class="btn ghost" id="confirm-dag">Execute Plan</button>
+            </div>
+          </div>
+          <div id="plan-list" class="plan-grid"></div>
+        </section>
+
+        <section id="dag-panel" class="panel dag-panel" data-phase="executing complete">
+          <div class="panel-header">
+            <div>
+              <h2>Execution DAG</h2>
+              <p>Live orchestration status by phase.</p>
+            </div>
+            <div class="panel-actions">
+              <button class="btn ghost" id="confirm-freestyle">Run Freestyle</button>
+            </div>
+          </div>
+          <div id="dag-viewer" class="panel-body"></div>
+        </section>
+
+        <section id="log-panel" class="panel log-panel" data-phase="executing complete error">
+          <div class="panel-header">
+            <div>
+              <h2>Live Logs</h2>
+              <p>Event stream and runtime signals.</p>
+            </div>
+            <div class="panel-actions">
+              <button class="btn secondary" id="reset-btn">Reset</button>
+            </div>
+          </div>
+          <div id="log-viewer" class="panel-body"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

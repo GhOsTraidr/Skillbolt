@@ -1,0 +1,9 @@
+{
+  "customCommands": [
+    {
+      "name": "test-skill",
+      "description": "This skill should be used when testing Continue format.",
+      "prompt": "# Test Instructions\n\nYou are a test assistant.\n\n## Workflow\n\n1. Receive input\n2. Process data\n3. Return result"
+    }
+  ]
+}

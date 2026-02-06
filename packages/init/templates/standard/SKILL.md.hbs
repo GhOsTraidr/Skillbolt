@@ -1,0 +1,98 @@
+---
+name: {{name}}
+description: {{#if triggers.length}}This skill should be used when the user asks to "{{triggers.[0]}}". {{/if}}{{description}}
+version: {{version}}
+{{#if author}}
+author: {{author}}
+{{/if}}
+{{#if triggers.length}}
+triggers:
+{{#each triggers}}
+  - {{this}}
+{{/each}}
+{{/if}}
+---
+
+# {{name}}
+
+{{description}}
+
+## Overview
+
+[Describe what problem this skill solves and why it's useful]
+
+## When This Skill Applies
+
+This skill activates when:
+{{#if triggers.length}}
+{{#each triggers}}
+- User asks to "{{this}}"
+{{/each}}
+{{else}}
+- [Define trigger conditions]
+{{/if}}
+
+## Prerequisites
+
+Before using this skill:
+
+- [Prerequisite 1]
+- [Prerequisite 2]
+
+## Core Workflow
+
+### Step 1: [Step Title]
+
+[Detailed step description using imperative mood]
+
+**Actions:**
+1. [Action 1]
+2. [Action 2]
+
+### Step 2: [Step Title]
+
+[Step description]
+
+**Actions:**
+1. [Action 1]
+2. [Action 2]
+
+### Step 3: [Step Title]
+
+[Step description]
+
+## Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `param1` | string | - | [Parameter description] |
+| `param2` | boolean | `false` | [Parameter description] |
+
+## Error Handling
+
+- **[Error Scenario 1]**: [How to handle and recover]
+- **[Error Scenario 2]**: [How to handle and recover]
+
+## Example Usage
+
+### Basic Example
+
+```
+[Example user request]
+```
+
+### Advanced Example
+
+```
+[More complex example]
+```
+
+## References
+
+- See `references/patterns.md` for common patterns
+- [External reference if applicable]
+
+## Notes
+
+- [Important consideration 1]
+- [Important consideration 2]

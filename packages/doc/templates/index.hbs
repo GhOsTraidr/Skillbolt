@@ -1,0 +1,22 @@
+# Skills Index
+
+{{#if title}}
+> {{title}}
+{{/if}}
+
+## Available Skills
+
+| Name | Description | Version | Tags |
+|------|-------------|---------|------|
+{{#each items}}
+| [{{this.name}}]({{this.docPath}}) | {{truncate this.description 50}} | {{this.version}} | {{join this.tags ", "}} |
+{{/each}}
+
+## Quick Links
+
+{{#each items}}
+- [{{this.name}}]({{this.docPath}}) - {{truncate this.description 80}}
+{{/each}}
+
+---
+*Total: {{items.length}} skills*

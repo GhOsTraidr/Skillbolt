@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skill Capability Tree</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f1115;
+        --surface: #171a21;
+        --surface-strong: #1f2430;
+        --text: #f2f3f7;
+        --muted: #a2a9b8;
+        --accent: #4cc9f0;
+        --border: #262b3a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px;
+        font-family: 'Space Grotesk', 'Sora', 'Avenir', system-ui, sans-serif;
+        background: radial-gradient(circle at top, #1b1f2a, var(--bg));
+        color: var(--text);
+      }
+
+      header {
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin: 0 0 8px;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .tree {
+        display: grid;
+        gap: 12px;
+      }
+
+      details.node {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--surface);
+        padding: 12px 16px;
+      }
+
+      details.node[open] {
+        background: var(--surface-strong);
+      }
+
+      summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        align-items: baseline;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .node-name {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .node-count {
+        color: var(--accent);
+        font-size: 13px;
+      }
+
+      .node-desc {
+        color: var(--muted);
+        font-size: 13px;
+        flex-basis: 100%;
+      }
+
+      .node-body {
+        margin-top: 12px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .skills {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+
+      .skills li {
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: rgba(15, 17, 21, 0.6);
+        border: 1px solid var(--border);
+      }
+
+      .skill-name {
+        font-weight: 600;
+        display: block;
+      }
+
+      .skill-desc {
+        color: var(--muted);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Skill Capability Tree</h1>
+      <p>Explore skills grouped by capability domains.</p>
+    </header>
+    <section class="tree">
+      
+    <details class="node depth-0" open>
+      
+    <summary>
+      <span class="node-name">Root</span>
+      <span class="node-count">4 skills</span>
+      <span class="node-desc">Skill capability tree root</span>
+    </summary>
+  
+      <div class="node-body">
+        
+    <details class="node depth-1" open>
+      
+    <summary>
+      <span class="node-name">Content Creation</span>
+      <span class="node-count">1 skill</span>
+      <span class="node-desc">This category encompasses tools and workflows for authoring various forms of written content, such as documentation, proposals, and technical specifications. It focuses on assisting users in structuring, refining, and iterating on text to produce high-quality documents.</span>
+    </summary>
+  
+      <div class="node-body">
+        
+        
+      <ul class="skills">
+        
+              <li>
+                <span class="skill-name">doc-coauthoring</span>
+                <span class="skill-desc">Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.</span>
+              </li>
+            
+      </ul>
+    
+      </div>
+    </details>
+  
+
+    <details class="node depth-1" open>
+      
+    <summary>
+      <span class="node-name">Development</span>
+      <span class="node-count">3 skills</span>
+      <span class="node-desc">This category includes developer-centric tools for code generation, testing, and API management. It covers tasks ranging from reviewing code quality and writing specific bundler tests to migrating codebases to new model versions.</span>
+    </summary>
+  
+      <div class="node-body">
+        
+        
+      <ul class="skills">
+        
+              <li>
+                <span class="skill-name">claude-opus-4-5-migration</span>
+                <span class="skill-desc">Migrate prompts and code from Claude Sonnet 4.0, Sonnet 4.5, or Opus 4.1 to Opus 4.5. Use when the user wants to update their codebase, prompts, or API calls to use Opus 4.5. Handles model string updates and prompt adjustments for known Opus 4.5 behavioral differences. Does NOT migrate Haiku 4.5.</span>
+              </li>
+            
+              <li>
+                <span class="skill-name">my-first-skill</span>
+                <span class="skill-desc">This skill should be used when the user asks to &quot;review code&quot;. A skill that helps with code review</span>
+              </li>
+            
+              <li>
+                <span class="skill-name">writing-bundler-tests</span>
+                <span class="skill-desc">Guides writing bundler tests using itBundled/expectBundled in test/bundler/. Use when creating or modifying bundler, transpiler, or code transformation tests.</span>
+              </li>
+            
+      </ul>
+    
+      </div>
+    </details>
+  
+        
+      </div>
+    </details>
+  
+    </section>
+  </body>
+</html>

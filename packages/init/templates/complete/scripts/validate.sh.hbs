@@ -1,0 +1,47 @@
+#!/bin/bash
+# {{name}} - Validation Script
+# Generated on {{date}}
+
+# This script validates the {{name}} skill structure and content.
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SKILL_DIR="$(dirname "$SCRIPT_DIR")"
+
+echo "=== Validating {{name}} Skill ==="
+echo ""
+
+# Check required files
+echo "Checking required files..."
+required_files=("SKILL.md" "README.md")
+for file in "${required_files[@]}"; do
+    if [[ -f "$SKILL_DIR/$file" ]]; then
+        echo "  ✓ $file exists"
+    else
+        echo "  ✗ $file missing"
+        exit 1
+    fi
+done
+
+# Check SKILL.md has frontmatter
+echo ""
+echo "Checking SKILL.md format..."
+if head -1 "$SKILL_DIR/SKILL.md" | grep -q "^---$"; then
+    echo "  ✓ Frontmatter detected"
+else
+    echo "  ✗ Missing frontmatter"
+    exit 1
+fi
+
+# Run skill-lint if available
+echo ""
+if command -v skill-lint &> /dev/null; then
+    echo "Running skill-lint..."
+    skill-lint "$SKILL_DIR"
+else
+    echo "skill-lint not found, skipping lint check"
+fi
+
+echo ""
+echo "=== Validation Complete ==="

@@ -1,0 +1,22 @@
+# Test Project Rules
+
+## Overview
+
+Rules for testing Cursor format conversion.
+
+## Workflow Rules
+
+### Step 1
+Always validate input first.
+
+### Step 2
+Process according to format specifications.
+
+### Step 3
+Output in correct format.
+
+## Constraints
+
+- Never modify original files
+- Always preserve metadata where possible
+- Log warnings for lossy conversions
